@@ -1,9 +1,31 @@
 ﻿<Application x:Class="KAEOS.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:KAEOS"
+             xmlns:viewModels="clr-namespace:KAEOS.ViewModels"
+             xmlns:converters="clr-namespace:KAEOS.Converters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <!-- ViewModels -->
+            <viewModels:ShellVm x:Key="ShellVm" />
+            <viewModels:HardwareMonitoringVm x:Key="HardwareMonitoringVm" />
+            <viewModels:DateTimeMonitoringVm x:Key="DateTimeMonitoringVm" />
+            <viewModels:NetworkMonitoringVm x:Key="NetworkMonitoringVm" />
+
+            <!-- Converters -->
+            <converters:FloatToDoubleConverter x:Key="FloatToDoubleConverter" />
+            <converters:HeightConverter x:Key="HeightConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" TriggerValue="False" IsHidden="False" />
+            <converters:BytesToSuffixConverter x:Key="BytesToSuffixConverter" />
+
+            <!-- Styles -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/WindowStyle.xaml" />
+                <ResourceDictionary Source="Styles/GaugeStyle.xaml" />
+                <ResourceDictionary Source="Styles/TextContainerStyle.xaml" />
+                <ResourceDictionary Source="Styles/ItemsContainerStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
